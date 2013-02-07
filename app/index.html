@@ -2,18 +2,40 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <title>Shippo Asakura Speed</title>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <div ng-controller="Shippo">
+    <h1>Shippo Asakura Speed</h1>
 
-  <div ng-view></div>
+    <div id="stats">
+      <h2>Statistiche di movimento</h2>
+      <p>{{max}} m/Turno</p>
+      <p>{{max*3.6/3}} km/h</p>
+      <p>{{min1fat}} min con 1 fatica</p>
+      <p>{{sec1fat}} sec con 1 fatica</p>  
+    </div>
+        
+    <div id="energy"> 
+      <h2>Energia</h2>           
+      <strong>Ki pool</strong> {{ki_pool}}          
+      <strong>Fatiche</strong> {{fatigues}}   
+    <div>  
 
-  <div>Angular seed app: v<span app-version></span></div>
+    <div id="calculator">
+      <p><strong>Distanza (Km)</strong> <input type="text" ng-model="distance" size="6"/></p>
+      <strong>Turni</strong>&nbsp;{{ turns() }} ({{ trip_m() }}&nbsp;minuti)
+      <strong>Fatiche</strong>&nbsp;{{ spent_fatigues() }}
+      <strong>Ki</strong>&nbsp;{{ spent_ki() }} 
+      <strong>Ore&nbsp;recupero</strong>&nbsp;{{ recover_h() }} 
+    </div>
+    <div id="instructions">            
+      <strong>Istruzioni:</strong> tirare un d100 per atletica.<br/>
+      Se &gt;= 85 (dado) i bonus fanno si che Shippo può muoversi ovunque all'istante. <br/>          
+      Se &lt; 85 (dado) inserire la distanza nella tabella e verranno calcolati i costi in Fatiche e Ki   
+    </div>         
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
